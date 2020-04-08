@@ -6,7 +6,7 @@ Run the following commands to build the docker image and run the containers:<br/
 2.  Build a network so that we can have communication between the java and mongo containers:<br/>
     `docker create mynote-network`
 3.  `docker container run --name mymongo --network mynote-network -d mongo`
-4.  `docker run --name mynote-app -d -p 8080:8080 --network mynote-network -e MONGO_URL=mongodb://mymongo:27017/dev note-taker-app:1.0`
+4.  `docker run --name mynote-app -d -p 8080:8080 --network mynote-network -e MONGO_URL=mongodb://mymongo:27017/dev note-taker-app:1.0`<br/>
     We can use the name of mongo container as hostname for mongo db url since they are on the same network now<br/>
 5.  `docker container exec -it mynote-app sh`<br/>
     To check the images being uploaded to the mynote-app container and navigate to /tmp/uploads

@@ -10,3 +10,5 @@ Run the following commands to build the docker image and run the containers:<br/
     We can use the name of mongo container as hostname for mongo db url since they are on the same network now<br/>
 5.  `docker container exec -it mynote-app sh`<br/>
     To check the images being uploaded to the mynote-app container and navigate to /tmp/uploads
+6.  To run the image pushed to docker hub directly use below command for the note app: <br/>
+    `docker container run -d -p 8080:8080 --name mynote --network mynote-network -e MONGO_URL=mongodb://mymongo:27017/dev abhilash28abhi/note-taker-app:1.0`

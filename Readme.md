@@ -2,7 +2,8 @@ Spring boot based note taking app using mongo db for storage.
 It uses apache freemarker as a template engine for html pages.
 
 Run the following commands to build the docker image and run the containers:<br/>
-1.  `docker image build -t note-taker-app:1.0 .` - To build the image from the current directory <br/>
+1.  To build the image from the current directory <br/>
+    `docker image build -t note-taker-app:1.0 .`
 2.  Build a network so that we can have communication between the java and mongo containers:<br/>
     `docker create mynote-network`
 3.  `docker container run --name mymongo --network mynote-network -d mongo`

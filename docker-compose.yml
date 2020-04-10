@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mynote:
+    image: abhilash28abhi/note-taker-app:1.0
+    environment:
+      - MONGO_URL=mongodb://mymongo:27017/dev
+    ports:
+      - 8080:8080
+    networks:
+      - mynote-network
+  mymongo:
+    image: mongo
+    networks:
+      - mynote-network
+networks:
+  mynote-network:
+    external: true

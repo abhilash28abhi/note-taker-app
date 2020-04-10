@@ -1,6 +1,7 @@
 version: '3'
 services:
   mynote:
+    container_name: mynote
     image: abhilash28abhi/note-taker-app:1.0
     environment:
       - MONGO_URL=mongodb://mymongo:27017/dev
@@ -9,6 +10,7 @@ services:
     networks:
       - mynote-network
   mymongo:
+    container_name: mymongo
     image: mongo
     networks:
       - mynote-network

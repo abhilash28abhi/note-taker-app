@@ -17,3 +17,11 @@ Run the following commands to build the docker image and run the containers:<br/
     `docker-compose --file docker-compose.yml config` - To check if the compose yml file is correct <br/>
     `docker-compose --file docker-compose.yml up -d` - To start the containers <br/>
     `docker-compose --file docker-compose.yml down` - To stop and remove the containers <br/>
+8.  To run the k8's cluster, we need to deploy the files inside kube folder as below: <br/>
+    `kubectl apply -f kube` : This command submits all the YAML files in the kube directory to Kubernetes<br/>
+9.  We can view the application in this url with K8: `http://localhost:80`
+10. To scale my note app deployment use : <br/>
+    `kubectl scale --replicas=2 deployment/mynote`
+    `kubectl delete deployment mymongo mynote` -- To delete the deployments and pods <br/>
+    `kubectl delete services mymongo mynote` -- To delete the services <br/>
+    `kubectl delete deployments --all` -- alternative command <br/>

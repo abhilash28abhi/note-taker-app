@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynote
+spec:
+  replicas: 1
+#selector.matchLabels field selects those Pods with a app: mynote label to belong to this deployment resource
+  selector:
+    matchLabels:
+      app: mynote
+#template.metadata.labels field defines a label for the Pods that wrap your container
+  template:
+    metadata:
+      labels:
+        app: mynote
+    spec:
+      containers:
+        - name: mynote-app
+          image: abhilash28abhi/note-taker-app:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URL
+#mymongo is the name of the mongo db service
+              value: mongodb://mymongo:27017/dev
+          imagePullPolicy: Always
+# ... Deployment YAML definition
+---
+# ... Service YAML definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: mynote
+#will expose all the pods having same app name to this service
+spec:
+  selector:
+    app: mynote
+#service listens for requests on port 80 and forwards them to port 8080 of the target Pods
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer

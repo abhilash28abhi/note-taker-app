@@ -1,0 +1,48 @@
+apiVersion: v1
+#similar to docker volume which is made available to the MongoDB container to save its data
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mymongo
+spec:
+  selector:
+    app: mymongo
+  ports:
+    - port: 27017
+      targetPort: 27017
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mymongo
+spec:
+  selector:
+    matchLabels:
+      app: mymongo
+  template:
+    metadata:
+      labels:
+        app: mymongo
+    spec:
+      containers:
+        - name: mymongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: storage
+              mountPath: /data/db
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc

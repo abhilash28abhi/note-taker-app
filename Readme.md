@@ -16,4 +16,4 @@ Run the following commands to build the docker image and run the containers:<br/
 7.  Additionally we can use docker compose file to bring up the containers using:
     `docker-compose --file docker-compose.yml config` - To check if the compose yml file is correct <br/>
     `docker-compose --file docker-compose.yml up -d` - To start the containers <br/>
-    `docker-compose --file docker-compose.yml down` - To stop and remove the containers<br/>
+    `docker-compose --file docker-compose.yml down` - To stop and remove the containers <br/>

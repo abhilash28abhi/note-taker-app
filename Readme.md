@@ -13,7 +13,7 @@ Run the following commands to build the docker image and run the containers:<br/
     To check the images being uploaded to the mynote-app container and navigate to /tmp/uploads
 6.  To run the image pushed to docker hub directly use below command for the note app: <br/>
     `docker container run -d -p 8080:8080 --name mynote --network mynote-network -e MONGO_URL=mongodb://mymongo:27017/dev abhilash28abhi/note-taker-app:1.0`
-7.  Additionally we can use docker compose file to bring up the containers using:
+7.  Additionally we can use docker compose file to bring up the containers using: <br/>
     `docker-compose --file docker-compose.yml config` - To check if the compose yml file is correct <br/>
     `docker-compose --file docker-compose.yml up -d` - To start the containers <br/>
     `docker-compose --file docker-compose.yml down` - To stop and remove the containers <br/>
